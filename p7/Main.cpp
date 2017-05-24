@@ -1,110 +1,63 @@
 #include <iostream>
+#include <algorithm>
 #include "Arbin.h"
+
 using namespace std;
 
-Arbin<int> reconstruir(List<int> post, List<int> in);
-
-void mostrarArbol(List<int> *niveles) { // Usando un iterador recorremos el arbol
-	List<int>::ConstIterator it = niveles->cbegin();
-	while (it != niveles->cend()) {
-		cout << it.elem() << " ";
-		it.next();
+template <class T>
+Arbin<T> leerArbol(const T& repVacio){
+	T elem;
+	cin >> elem;
+	if (elem == repVacio)
+		return Arbin<T>();
+	else{
+		Arbin<T> hi = leerArbol(repVacio);
+		Arbin<T> hd = leerArbol(repVacio);
+		return Arbin<T>(hi, elem, hd);
 	}
-	cout << endl;
 }
 
-int main(){
+void planificarRescate(Arbin<int> rutas, int &grupos, int &max){
+	int gruIzq, maxIzq, gruDer, maxDer;
 
-	List<int> post, in;
-	
-	int Px,Py,x,y;
-	bool postSalir, inSalir, continuar = true;
-
-	while (continuar){
-		postSalir = false, inSalir = false;
-		post = List<int>();
-		in = List<int>();
-
-		cin >> x;
-		Px = x;
-
-		while (!postSalir && x != -1){ // primera línea
-			post.push_back(x);
-
-			cin >> x;
-
-			if (x == -1)
-				postSalir = true;
-		}
-
-		cin >> y;
-		Py = y;
-
-		while (!inSalir && y != -1){ // segunda línea
-			in.push_back(y);
-
-			cin >> y;
-
-			if (y == -1)
-				inSalir = true;
-		}
-
-		if (Px == -1 && Py == -1) //evalúa si los dos primeros de cada línea han sido uno, de ser así, sale del while mas externo y acaba
-			continuar = false;
-
-		Arbin<int> arbol = reconstruir(post, in);
-		mostrarArbol(arbol.niveles());
+	if (rutas.esVacio()){
+		grupos = 0;
+		max = 0;
 	}
-
-	return 0;
-}
-
-Arbin<int> reconstruir(List<int> post, List<int> in){
-	List<int> postIz, postDr, inIz, inDr;
-	Arbin<int> arbolIz, arbolDr;
-
-	if (post.empty() && in.empty()){ // si ambas listas están vacías, devuelve un árbol vacío
-		return Arbin<int>();		// no vale con size() == 1 porque el -1 no lo mete dentro de la lista, por lo que no hay nada
-	}								// no he probado con size() == 0, pero es mejor aprovechar la función empty 
 
 	else {
-		int raiz = post.back(), posIz = 0;
-		int elem = in.at(posIz);
-		int numElemsIzq = 0;
+		planificarRescate(rutas.hijoIz(), gruIzq, maxIzq);
+		planificarRescate(rutas.hijoDr(), gruDer, maxDer);
 
-		while (elem != raiz){ //sublista inIz
-			numElemsIzq++;
-			inIz.push_back(elem);
-			posIz++;
-			elem = in.at(posIz);
-		}
+		//si hay un nodo del arnol q no es 0 y se han usado 0 equpos d rescate por ambos lados hay q poner un equipo de rescate
+		if (gruIzq == 0 && gruDer == 0 && rutas.raiz() != 0)
+			grupos = 1;
+		else
+			grupos = gruDer + gruIzq;
 
-		int posDr = posIz+1;
 
-		while (posDr <= in.size() - 1){ //sublista inDr o elem!=NULL
-			elem = in.at(posDr);
-			inDr.push_back(elem);
-			posDr++;	
-		}
-
-		int dondeEmpiezo = numElemsIzq; // debe ser igual porque en el caso de postorden la raiz se encuentra al final
-										//hay que tener en cuenta también que comienza en la posición 0
-		int x = numElemsIzq - 1;
-
-		while (x >= 0){ //sublista postIz
-			postIz.push_front(post.at(x));
-			x--;
-		}
-
-		while (post.at(dondeEmpiezo) != raiz){ //sublista postDr
-			postDr.push_back(post.at(dondeEmpiezo));
-			dondeEmpiezo++;
-		}
-
-		arbolIz = reconstruir(postIz, inIz);
-		arbolDr = reconstruir(postDr, inDr);
-
-		return Arbin<int>(arbolIz, raiz, arbolDr);
+		if (maxIzq > maxDer)
+			max = maxIzq + rutas.raiz();
+		else
+			max = maxDer + rutas.raiz();
 	}
 
+}
+
+void resuelveCaso(){
+	Arbin<int> rutas;
+	int grupos, max;
+	rutas = leerArbol(-1); // -1 es la repr. de arbol vacio
+	planificarRescate(rutas, grupos, max);
+	cout << grupos << " " << max << endl;
+}
+
+
+int main(){
+	int numCasos;
+	cin >> numCasos;
+	for (int i = 0; i < numCasos; i++)
+		resuelveCaso();
+
+	return 0;
 }
