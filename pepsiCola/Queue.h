@@ -50,10 +50,10 @@ public:
 				nodoP = nodoP->_sig;
 		}
 
-		if (encontrado){
-			Nodo *aux = nodoP->_sig;
-			nodoP->_sig = colegas._prim;
-			colegas._ult->_sig = aux;
+		if (encontrado){ // si el pringado ha sido encontrado (lo hay)
+			Nodo *aux = nodoP->_sig; // guardamos el siguiente del pringado
+			nodoP->_sig = colegas._prim; // el siguiente del pringado ahora es el primero de los colegas
+			colegas._ult->_sig = aux; // el siguiente del ultimo de los colegas es el que era el siguiente del pringado
 
 			colegas._prim = NULL;
 			colegas._ult = NULL;
