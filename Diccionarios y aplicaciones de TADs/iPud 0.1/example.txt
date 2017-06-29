@@ -1,0 +1,131 @@
+addSong a dama 3
+addSong b gonza 4
+addSong c edu 6
+addSong d pepu 2
+addSong e irene 432
+addToPlaylist a
+addToPlaylist b
+addToPlaylist c
+addToPlaylist d
+addToPlaylist e
+addToPlaylist e
+play
+play
+play
+play
+play
+
+addSong a dama 3
+addSong b gonza 4
+addSong c edu 6
+addSong d pepu 2
+addSong e irene 432
+addToPlaylist a
+addToPlaylist b
+addToPlaylist a
+addToPlaylist b
+addToPlaylist e
+addToPlaylist e
+play
+play
+play
+play
+play
+
+
+addSong a dama 3
+addSong b gonza 4
+addSong c edu 6
+addSong d pepu 2
+addSong e irene 432
+addToPlaylist e
+addToPlaylist e
+addToPlaylist e
+addToPlaylist e
+play
+play
+play
+play
+
+addSong a dama 3
+addSong b gonza 4
+addSong c edu 6
+addToPlaylist a
+addToPlaylist b
+play
+play
+addToPlaylist a 
+play
+recent 10
+addToPlaylist b
+addToPlaylist c
+play
+play
+recent 10
+addToPlaylist a
+play
+recent 10
+
+addSong a dama 3
+addSong b gonza 4
+addSong c edu 6
+addToPlaylist a
+addToPlaylist b
+play
+play
+addToPlaylist b
+play
+recent 10
+addToPlaylist c
+play
+recent 10
+
+addSong a dama 3
+addSong b gonza 4
+addSong c edu 6
+addToPlaylist a
+addToPlaylist b
+deleteSong a
+deleteSong x
+
+
+addSong a dama 3
+FIN
+addSong b gonza 4
+FIN
+addSong c edu 6
+deleteSong a
+addToPlaylist a
+play
+recent -12
+totalTime
+current
+
+
+addSong a dama 3
+addSong b gonza 4
+addSong c edu 6
+addToPlaylist a
+addToPlaylist b
+play
+play
+recent 10
+deleteSong b
+recent 10
+
+
+
+addSong a dama 3
+deleteSong b
+deleteSong x
+play
+recent 10
+current
+totalTime
+addToPlaylist 500
+addToPlaylist a
+current
+play
+current
+totalTime
+
