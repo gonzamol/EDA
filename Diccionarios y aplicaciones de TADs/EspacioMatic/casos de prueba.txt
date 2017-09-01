@@ -1,0 +1,14 @@
+20
+nuevaNave 10
+nuevaNave 22
+equipaNave 10 laseres 4
+equipaNave 22 cabinas 5
+equipaNave 10 cabinas 0
+equipaNave 22 escudos 0
+estropeaNave 10 laseres
+navesDefectuosas
+nuevaNave 33
+modulosNave 10
+estropeaNave 22 cabinas
+verNivelModuloNave 22 cabinas
+verNivelModuloNave 10 laseres
