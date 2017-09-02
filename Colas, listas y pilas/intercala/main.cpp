@@ -1,13 +1,15 @@
 #include <iostream>
 #include "List.h"
 
+using namespace std;
+
+// GONZALO MOLINA
 // PARCIAL JUNIO 2015 EJERCICIO 1
 // FUNCIONA PERFECTAMENTE
 
-using namespace std;
-
-void mostrarLista(List<int>* l){
-	List<int>::ConstIterator it = l->cbegin();
+template<class T>
+void mostrarLista(List<T>* l){
+	List<T>::ConstIterator it = l->cbegin();
 	if (it != l->cend()){
 		cout << it.elem();
 		it.next();
@@ -23,22 +25,22 @@ int main(){
 	int n;
 	cin >> n;
 
-	while(cin){
-		List<int> *lista = new List<int>();
+	while(n>0){
+		List<int> *l = new List<int>();;
+		int num;
+		cin >> num;
 
-		while(n != -1){
-			lista->push_back(n);
-			cin >> n;
+		while(num != -1){
+			l->push_back(num);
+			cin >> num;
 		}
 
-		mostrarLista(lista);
-		lista->intercala();
-		mostrarLista(lista);
+		l->intercala();
 
-		cout << endl;
-		cin >> n;
+		mostrarLista(l);
+
+		n--;
 	}
-
 
 	return 0;
 }

@@ -15,7 +15,11 @@
 
 #include "Exceptions.h"
 #include <cassert>
-using namespace std;
+
+// GONZALO MOLINA
+// PARCIAL JUNIO 2015 EJERCICIO 1
+// FUNCIONA PERFECTAMENTE
+
 
 /**
  Implementaci�n del TAD Lista utilizando una lista doblemente enlazada.
@@ -68,23 +72,28 @@ public:
 	}
 
 	void intercala(){
-		Nodo* act = _prim;
-		Nodo* nuevo = _ult;
-		int n = (_numElems / 2) - 1;
+		Nodo *act = _prim;
+		Nodo *ulti = _ult;
+		int n = (_numElems / 2);
 
-		while(n > 0){
+		while(n>0){
 			Nodo *aux = act->_sig;
-			Nodo *aux1 = nuevo->_ant;
-			act->_sig = nuevo;
-			nuevo->_ant = act;
-			nuevo->_sig = aux;
+			Nodo *aux1 = ulti->_ant;
+			ulti->_sig = aux;
+			act->_sig = ulti;
+			ulti->_ant = act;			
 
 			act = aux;
-			nuevo = aux1;
+			ulti = aux1;
 
-			if(act->_sig == nuevo){
+			if(act == ulti){ // si el numero de elementos es impar, llegará un momento en el que apunten al mismo elemento
 				act->_ant = aux1->_sig;
-				nuevo->_sig = NULL;
+				ulti->_sig = NULL;
+			}
+
+			if(act == ulti->_sig){
+				ulti->_sig = act;
+				act->_sig = NULL;
 			}
 
 			n--;
@@ -246,6 +255,8 @@ public:
 	 */
 	class ConstIterator {
 	public:
+		ConstIterator() : _act(NULL) {}
+
 		void next() {
 			if (_act == NULL) throw InvalidAccessException();
 			_act = _act->_sig;
@@ -284,7 +295,6 @@ public:
 		// tipo iterador
 		friend class List;
 
-		ConstIterator() : _act(NULL) {}
 		ConstIterator(Nodo *act) : _act(act) {}
 
 		// Puntero al nodo actual del recorrido
@@ -298,6 +308,8 @@ public:
 	 */
 	class Iterator {
 	public:
+		Iterator() : _act(NULL) {}
+
 		void next() {
 			if (_act == NULL) throw InvalidAccessException();
 			_act = _act->_sig;
@@ -348,7 +360,6 @@ public:
 		// tipo iterador
 		friend class List;
 
-		Iterator() : _act(NULL) {}
 		Iterator(Nodo *act) : _act(act) {}
 
 		// Puntero al nodo actual del recorrido
