@@ -1,0 +1,14 @@
+13
+anadirAsignatura elp
+anadirAsignatura eda
+anadirAlumno gonza
+anadirAlumno alex
+anadirAlumno pepu
+anadirAlumno dama
+anadirFalta dama bd
+anadirAsignatura bd
+anadirFalta dama bd
+noFaltas
+maxFaltas
+totalFaltas gonza
+totalFaltas dama
