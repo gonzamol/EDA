@@ -7,5 +7,7 @@ Curso 2016/17.
 Data Structures and Algorithms' projects.
 
 Árboles binarios = Bintrees.
+
 Colas, listas y pilas = Queue, list and stack.
+
 Diccionarios y aplicaciones TADS = TreeMap, HashMap and aplications.
