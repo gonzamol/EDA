@@ -1,0 +1,13 @@
+20
+nuevo 15000
+altaPescador pepe
+altaPescador juan
+nuevaCaptura pepe salmon 5
+nuevaCaptura pepe atun 8
+nuevaCaptura pepe merluza 10
+nuevaCaptura juan atun 4
+nuevaCaptura juan carpa 6
+capturasPescador juan
+kilosEspecie atun
+kilosPescador pepe
+bodegaRestante
