@@ -51,7 +51,7 @@ public:
 		Nodo *ant = _prim;
 		Nodo *target = _prim; // para guardar la posicion donde tiene que ir el elemento
 		Nodo *beforeTarget = _prim; // posicion anterior a la posicion objetivo
-		bool enc = false, tar = false;
+		bool enc = false;
 
 		if(pos > _numElems || pos <= 0) // posicion inexistente
 			throw ExcepcionTAD("Posicion inexistente");

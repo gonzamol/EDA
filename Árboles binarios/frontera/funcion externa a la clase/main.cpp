@@ -40,7 +40,6 @@ void buscaFronteras(Arbin<int> &rutas, List<int> &front){
 			buscaFronteras(rutas.hijoIz(), front);
 			buscaFronteras(rutas.hijoDr(), front);
 
-			// ¿unir las dos listas?
 		}
 	}
 
